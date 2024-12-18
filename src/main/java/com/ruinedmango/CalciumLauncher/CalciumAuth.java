@@ -16,6 +16,8 @@ public class CalciumAuth extends Thread implements Authenticator{
 	private String name;
 	private Boolean offline;
 	private AuthInfo authinfo = null;
+	public Boolean done = false;
+	
 	
 	public CalciumAuth(Boolean offline, String name) {
 		this.name = name;
@@ -40,6 +42,7 @@ public class CalciumAuth extends Thread implements Authenticator{
 	    	MicrosoftAuthenticator auth = null;
 			try {
 				auth = MicrosoftAuthenticator.login(it -> loginWebUi(it.userCode));
+				done = true;
 			} catch (AuthenticationException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -59,9 +62,9 @@ public class CalciumAuth extends Thread implements Authenticator{
 	            
 	            final WebEngine webEngine = webView.getEngine();
 	            
-	            System.out.print("https://login.live.com/oauth20_remoteconnect.srf?otc=" + userCode);
+	            System.out.print(userCode);
 	            
-	            webEngine.load("https://login.live.com/oauth20_remoteconnect.srf?otc=" + userCode);
+	            webEngine.load("https://login.live.com/oauth20_remoteconnect.srf");
 	            
 	            VBox root = new VBox(webView);
 	            
@@ -69,7 +72,6 @@ public class CalciumAuth extends Thread implements Authenticator{
 	            stage.show();
 	        }
 	    });
-	    while(true);
 	}
 	
 }

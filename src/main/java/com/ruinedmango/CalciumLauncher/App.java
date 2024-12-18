@@ -42,20 +42,9 @@ public class App extends Application {
         EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() { 
             public void handle(ActionEvent e) 
             { 
-                try {
-                	CalciumAuth auth = new CalciumAuth(offline, "Goofy");
-                	auth.start();
-					example.run(auth);
-				} catch (AuthenticationException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (LaunchException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+            	CalciumAuth auth = new CalciumAuth(offline, "Goofy");
+            	PackRunner runner = new PackRunner(example, auth);
+            	runner.start();
             } 
         }; 
         
