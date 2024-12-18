@@ -19,8 +19,8 @@ import javafx.stage.Stage;
  * JavaFX App
  */
 public class App extends Application {
-	private static Pack example = new Pack("RLCraft", "forge", "1.12.2", "14.23.5.2860", null);
-	private static boolean offline = false;
+	private static Pack example = new Pack("fexample", "forge", "1.7.10", "10.13.4.1614", null);
+	private static boolean offline = true;
 	
     @Override
     public void start(Stage stage) throws AuthenticationException, LaunchException, IOException {

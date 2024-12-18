@@ -33,6 +33,8 @@ public class CalciumAuth extends Thread implements Authenticator{
 		if(offline) {
 			try {
 				authinfo = new OfflineAuthenticator(name).auth();
+				done = true;
+				interrupt();
 			} catch (AuthenticationException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

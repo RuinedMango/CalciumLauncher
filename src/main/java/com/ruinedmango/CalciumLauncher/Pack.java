@@ -3,6 +3,7 @@ package com.ruinedmango.CalciumLauncher;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
+import org.apache.commons.lang3.StringUtils;
 import org.to2mbn.jmccc.auth.AuthenticationException;
 import org.to2mbn.jmccc.auth.Authenticator;
 import org.to2mbn.jmccc.launch.LaunchException;
@@ -170,19 +171,41 @@ public class Pack {
 				break;
 			case "forge":
 				System.out.print("launching forge\n");
-				try {
-		            LaunchOption opt = new LaunchOption(version + "-forge-" + loaderVer, auth, dir);
-		            opt.setJavaEnvironment(env);
-		            launcher.launch(opt, listener);
-				} catch (MissingDependenciesException e) {
-		            for (Library lib : e.getMissingLibraries()) {
-		            	System.out.print("getting lib:" + lib.getArtifactId() + "\n");
-		            	downloader.download(downloader.getProvider().library(dir, lib), new CallbackAdapter<Void>() {});
-		            }
-		            LaunchOption opt = new LaunchOption(version + "-forge-" + loaderVer, auth, dir);
-		            opt.setJavaEnvironment(env);
-		            launcher.launch(opt, listener);
-		        }
+				Float realver = Float.parseFloat(StringUtils.substringBeforeLast(version, "."));
+				if(StringUtils.substringBeforeLast(version, ".").length() == 3) {
+					realver -= 1;
+					realver /= 10;
+					realver += 1;
+				}
+				if(realver < 1.12){
+					try {
+			            LaunchOption opt = new LaunchOption(version + "-Forge" + loaderVer + "-" + version, auth, dir);
+			            opt.setJavaEnvironment(env);
+			            launcher.launch(opt, listener);
+					} catch (MissingDependenciesException e) {
+			            for (Library lib : e.getMissingLibraries()) {
+			            	System.out.print("getting lib:" + lib.getArtifactId() + "\n");
+			            	downloader.download(downloader.getProvider().library(dir, lib), new CallbackAdapter<Void>() {});
+			            }
+			            LaunchOption opt = new LaunchOption(version + "-Forge" + loaderVer + "-" + version, auth, dir);
+			            opt.setJavaEnvironment(env);
+			            launcher.launch(opt, listener);
+			        }
+				} else {
+					try {
+			            LaunchOption opt = new LaunchOption(version + "-forge-" + loaderVer, auth, dir);
+			            opt.setJavaEnvironment(env);
+			            launcher.launch(opt, listener);
+					} catch (MissingDependenciesException e) {
+			            for (Library lib : e.getMissingLibraries()) {
+			            	System.out.print("getting lib:" + lib.getArtifactId() + "\n");
+			            	downloader.download(downloader.getProvider().library(dir, lib), new CallbackAdapter<Void>() {});
+			            }
+			            LaunchOption opt = new LaunchOption(version + "-forge-" + loaderVer, auth, dir);
+			            opt.setJavaEnvironment(env);
+			            launcher.launch(opt, listener);
+			        }
+				}
 				break;
 			case "liteloader":
 				System.out.print("launching liteloader\n");
