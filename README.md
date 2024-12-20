@@ -9,6 +9,22 @@
 
 Calcium Launcher is built as a place for anyone to publish a modpack no matter how wacky or ourageous it is. Though Calcium Launcher started as a place for me and a couple close friends to post wacky and stupid modpacks. It has turned into something more; a place where stupidity and outrageousness should florish. The core principal of Calcium Launcher is that anyone should be able to post whatever kind of modpack they want with no restrictions. Calcium Launcher is not just a mirror of the modpacks on sites such as CurseForge and Modrinth. Calcium Launcher is meant to be a small platform much like the old [Void's Wrath](https://voidswrath.com/) launcher. Calcium Launcher doesn't promote quality and gameplay, Over all Calcium Launcher promotes creativity and fun.
 
+## Features
+
+- [x] All version support
+- [x] Automatic management of JREs
+- [x] Modloader support
+  - [x] Forge
+  - [x] Fabric
+  - [x] Quilt
+  - [ ] Neoforge(WIP)
+  - [ ] Optifine Standalone(WIP)
+- [x] Offline account
+- [ ] Mojang Auth(Considering)
+- [ ] Microsoft Auth(Waiting Approval)
+- [x] Pack Management
+  - [ ] Pack uploading(Upon request at ruinedmango@ruinedmango.com, webui WIP)        
+
 ## Technologies
 
 Calcium Launcher is built upon JavaFX and my personal fork of JMCCC([Official](https://github.com/xfl03/JMCCC), [Personal](https://github.com/RuinedMango/Neofix)) which by extension is built upon Mojang's Minecraft. It is also of course built upon the best programming language, Java.
