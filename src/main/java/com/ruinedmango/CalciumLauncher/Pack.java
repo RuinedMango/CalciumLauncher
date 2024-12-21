@@ -1,8 +1,10 @@
 package com.ruinedmango.CalciumLauncher;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.to2mbn.jmccc.auth.AuthenticationException;
 import org.to2mbn.jmccc.auth.Authenticator;
@@ -25,6 +27,7 @@ import org.to2mbn.jmccc.version.Library;
 import org.to2mbn.jmccc.version.Version;
 import org.to2mbn.jmccc.mcdownloader.provider.forge.ForgeVersionList;
 import org.to2mbn.jmccc.mcdownloader.provider.liteloader.LiteloaderVersionList;
+import org.to2mbn.jmccc.mcdownloader.provider.neoforge.NeoforgeDownloadProvider;
 import org.to2mbn.jmccc.mcdownloader.provider.quilt.QuiltDownloadProvider;
 
 public class Pack {
@@ -45,12 +48,14 @@ public class Pack {
 	public void install() throws InterruptedException, ExecutionException {
 		MinecraftDirectory dir = new MinecraftDirectory(System.getProperty("user.home") + "/.calcium/packs/" + name);
 		ForgeDownloadProvider forgeProvider = new ForgeDownloadProvider();
+		NeoforgeDownloadProvider neoforgeProvider = new NeoforgeDownloadProvider();
 		LiteloaderDownloadProvider liteloaderProvider = new LiteloaderDownloadProvider();
 		FabricDownloadProvider fabricProvider = new FabricDownloadProvider();
 		QuiltDownloadProvider quiltProvider = new QuiltDownloadProvider();
 		MinecraftDownloader downloader = MinecraftDownloaderBuilder.create()
 			.providerChain(DownloadProviderChain.create()
 				.addProvider(forgeProvider)
+				.addProvider(neoforgeProvider)
 				.addProvider(liteloaderProvider)
 				.addProvider(fabricProvider)
 				.addProvider(quiltProvider))
@@ -82,6 +87,29 @@ public class Pack {
 					public void failed(Throwable e) {
 						System.out.print(e + "\n");
 						downloader.downloadIncrementally(dir, version + "-forge" + version + "-" + loaderVer, new CallbackAdapter<Version>() {
+							@Override
+							public void done(Version ver) {
+								System.out.print("Doned\n");
+							}
+							@Override
+							public void failed(Throwable e) {
+								System.out.print(e + "\n");
+							}
+						});
+					}
+				});
+				break;
+			case "neoforge":	
+				System.out.print("Came from neoforge\n");
+				downloader.downloadIncrementally(dir, version + "-neoforge" + version + "-" + loaderVer, new CallbackAdapter<Version>() {
+					@Override
+					public void done(Version ver) {
+						System.out.print("Doned\n");
+					}
+					@Override
+					public void failed(Throwable e) {
+						System.out.print(e + "\n");
+						downloader.downloadIncrementally(dir, version + "-neoforge" + version + "-" + loaderVer, new CallbackAdapter<Version>() {
 							@Override
 							public void done(Version ver) {
 								System.out.print("Doned\n");
@@ -143,6 +171,15 @@ public class Pack {
 					}
 				});
 				break;
+		}
+	}
+	
+	public void uninstall() {
+		try {
+			FileUtils.deleteDirectory(new File(System.getProperty("user.home") + "/.calcium/packs/" + name));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 

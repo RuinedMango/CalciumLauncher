@@ -19,7 +19,7 @@ import javafx.stage.Stage;
  * JavaFX App
  */
 public class App extends Application {
-	private static Pack example = new Pack("fexample", "forge", "1.7.10", "10.13.4.1614", null);
+	private static Pack example = new Pack("nfexample", "neoforge", "1.21.3", "21.3.58", null);
 	private static boolean offline = true;
 	
     @Override
