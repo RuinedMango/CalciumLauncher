@@ -7,7 +7,7 @@
 
 ## Mission Statement
 
-Calcium Launcher is built as a place for anyone to publish a modpack no matter how wacky or ourageous it is. Though Calcium Launcher started as a place for me and a couple close friends to post wacky and stupid modpacks. It has turned into something more; a place where stupidity and outrageousness should florish. The core principal of Calcium Launcher is that anyone should be able to post whatever kind of modpack they want with no restrictions. Calcium Launcher is not just a mirror of the modpacks on sites such as CurseForge and Modrinth. Calcium Launcher is meant to be a small platform much like the old [Void's Wrath](https://voidswrath.com/) launcher. Calcium Launcher doesn't promote quality and gameplay, Over all Calcium Launcher promotes creativity and fun.
+Calcium Launcher is built as a place for anyone to publish a modpack no matter how wacky or ourageous it is. Though Calcium Launcher started as a place for me and a couple close friends to post wacky and stupid modpacks. It has turned into something more; a place where stupidity and outrageousness should florish. The core principal of Calcium Launcher is that anyone should be able to post whatever kind of modpack they want with no restrictions. Calcium Launcher is not just a mirror of the modpacks on sites such as CurseForge and Modrinth. Calcium Launcher is meant to be a small platform much like the old [Void's Wrath](https://voidswrath.com/) or the newer [Technic](https://www.technicpack.net/) launcher. Calcium Launcher doesn't promote quality and gameplay, Over all Calcium Launcher promotes creativity and fun.
 
 ## Features
 
