@@ -21,7 +21,7 @@ Calcium Launcher is built as a place for anyone to publish a modpack no matter h
   - [ ] Optifine Standalone(WIP)
 - [x] Offline account
 - [ ] Mojang Auth(Considering)
-- [ ] Microsoft Auth(Waiting Approval)
+- [x] Microsoft Auth
 - [x] Pack Management
   - [ ] Pack uploading(Upon request at ruinedmango@ruinedmango.com, webui WIP)
 - [ ] Official website and wiki(WIP along with webui)    
